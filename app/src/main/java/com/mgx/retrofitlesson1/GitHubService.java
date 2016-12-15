@@ -15,4 +15,7 @@ public interface GitHubService {
     Call<List<Repo>> listRepos(@Path("user") String user);
     @GET("users/{user}")
     Call<Repo> loadRepo(@Path("user") String user);
+
+    @GET("repos/{owner}/{repo}/contributors")
+    Call<List<Contributor>> contributorsByAddConverterGetCall(@Path("owner") String owner, @Path("repo") String repo);
 }
