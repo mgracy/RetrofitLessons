@@ -1,6 +1,7 @@
 package com.mgx.retrofitlesson1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +32,7 @@ public class MainActivity extends Activity {
     public static final String mOWNER = "square";
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
-    private Button btnLoadRepo, btnListContributor;
+    private Button btnLoadRepo, btnListContributor,toHSProject;
     private ListView list_view;
     GitHubService service;
 
@@ -41,10 +44,15 @@ public class MainActivity extends Activity {
     }
 
     private GitHubService buildRetrofit() {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
         Retrofit retrofit  = new Retrofit.Builder()
+                .client(okHttpClient)
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-//                .client(client)
                 .build();
         Log.d(TAG, "runRetrofit:");
 
@@ -58,8 +66,10 @@ public class MainActivity extends Activity {
         list_view = (ListView) findViewById(R.id.list_view);
         btnLoadRepo = (Button) findViewById(R.id.load_repo);
         btnListContributor = (Button) findViewById(R.id.list_contributor);
+        toHSProject = (Button) findViewById(R.id.toHSProject);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
+        toHSProject.setOnClickListener(mOnClickListener);
     }
 
     private void clearItem() {
@@ -121,6 +131,9 @@ public class MainActivity extends Activity {
                         }
                     });
                     break;
+                case R.id.toHSProject:
+                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
+                    startActivity(intent);
                 default:
                     break;
             }
