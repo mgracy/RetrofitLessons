@@ -85,9 +85,9 @@ public class MainActivity extends Activity {
                             Log.d(TAG, "onResponse: Type is " + response.body().getType());
                             Log.d(TAG, "onResponse: Name is " + response.body().getName());
                             Log.d(TAG, "onResponse: Email is " + response.body().getEmail());
-                            tvType.setText("Type is " + response.body().getType());
-                            tvName.setText("Name is " + response.body().getName());
-                            tvEmail.setText("Email is " + response.body().getEmail());
+                            tvType.setText("  Type is " + response.body().getType());
+                            tvName.setText("  Name is " + response.body().getName());
+                            tvEmail.setText("  Email is " + response.body().getEmail());
                         }
 
                         @Override
