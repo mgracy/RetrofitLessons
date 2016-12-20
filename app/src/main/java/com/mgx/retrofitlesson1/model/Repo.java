@@ -1,4 +1,4 @@
-package com.mgx.retrofitlesson1;
+package com.mgx.retrofitlesson1.model;
 
 /**
  * Created by glmgr on 2016/12/14.

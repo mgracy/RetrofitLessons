@@ -1,4 +1,4 @@
-package com.mgx.retrofitlesson1;
+package com.mgx.retrofitlesson1.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.mgx.retrofitlesson1.model.Contributor;
+import com.mgx.retrofitlesson1.service.GitHubService;
+import com.mgx.retrofitlesson1.R;
+import com.mgx.retrofitlesson1.model.Repo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     //    - Base URL: 总是以 /结尾
 //
 //    - @Url: 不要以 / 开头
@@ -115,7 +120,7 @@ public class MainActivity extends Activity {
                         public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
                             List<String> lists = new ArrayList<String>();
                             for (Contributor contributor : response.body()) {
-                                lists.add("Login: " + contributor.getLogin() + "\nHtml_url: " +contributor.getHtml_url() +"\ncontributions: " + contributor.getContributions());
+                                lists.add("Login: " + contributor.getLogin()  +"\t\tcontributions: " + contributor.getContributions());
                                 Log.d(TAG, "onResponse: Login is " + contributor.getLogin());
                                 Log.d(TAG, "onResponse: Html_url is " + contributor.getHtml_url());
                                 Log.d(TAG, "onResponse: contributions is " + contributor.getContributions());//
@@ -132,8 +137,9 @@ public class MainActivity extends Activity {
                     });
                     break;
                 case R.id.toHSProject:
-                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
+//                    startActivity(intent);
+                    openNewActivity(ChooseAreaActivity.class);
                 default:
                     break;
             }

@@ -1,4 +1,4 @@
-package com.mgx.retrofitlesson1;
+package com.mgx.retrofitlesson1.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.mgx.retrofitlesson1.R;
 
 /**
  * Created by glmgr on 2016/12/15.

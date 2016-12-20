@@ -1,4 +1,7 @@
-package com.mgx.retrofitlesson1;
+package com.mgx.retrofitlesson1.service;
+
+import com.mgx.retrofitlesson1.model.Contributor;
+import com.mgx.retrofitlesson1.model.Repo;
 
 import java.util.List;
 
