@@ -2,6 +2,7 @@ package com.mgx.retrofitlesson1.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,11 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mgx.retrofitlesson1.model.Contributor;
 import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.R;
 import com.mgx.retrofitlesson1.model.Repo;
+import com.mgx.retrofitlesson1.util.LogUtil;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +64,7 @@ public class MainActivity extends BaseActivity {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        Log.d(TAG, "runRetrofit:");
+        LogUtil.i(this.getClass().getSimpleName(), "buildRetrofit: Thread Id is " + Thread.currentThread().getId());
 
         return retrofit.create(GitHubService.class);
     }
@@ -139,7 +144,15 @@ public class MainActivity extends BaseActivity {
                 case R.id.toHSProject:
 //                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
 //                    startActivity(intent);
-                    openNewActivity(ChooseAreaActivity.class);
+//                    openNewActivity(ChooseAreaActivity.class);
+                    try{
+                        SQLiteDatabase db = LitePal.getDatabase();
+                        Toast.makeText(MainActivity.this, "Connect db successfully", Toast.LENGTH_SHORT).show();
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                        LogUtil.i(this.getClass().getSimpleName(), "onClick: Thread Id is " + Thread.currentThread().getId() + "\t" + ex.getMessage());
+                        Toast.makeText(MainActivity.this, "Failed to connect db", Toast.LENGTH_SHORT).show();
+                    }
                 default:
                     break;
             }
