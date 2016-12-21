@@ -26,15 +26,15 @@ public class LogUtil {
         }
     }
 
-    public static void i(String tag, String msg) {
-        if (LEVEAL <= INFO) {
-            Log.i(tag, msg);
-        }
-    }
-
     public static void d(String tag, String msg) {
         if (LEVEAL <= DEBUG) {
             Log.d(tag, msg);
+        }
+    }
+
+    public static void i(String tag, String msg) {
+        if (LEVEAL <= INFO) {
+            Log.i(tag, msg);
         }
     }
 
