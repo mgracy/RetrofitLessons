@@ -28,6 +28,11 @@
             android:background="@drawable/circle"
             android:layout_width="32sp"
             android:layout_height="32sp"/>
+        <Button
+            android:id="@+id/toMenu"
+            android:background="@drawable/menu"
+            android:layout_width="32sp"
+            android:layout_height="32sp"/>
     </LinearLayout>
 
     <TextView

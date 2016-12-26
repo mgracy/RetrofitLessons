@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.mgx.retrofitlesson1.activity.SlidingActivity"></activity>
         <activity android:name=".activity.DormActivity" android:label="HSProject">
         </activity>
         <activity android:name=".activity.ChooseAreaActivity" android:label="Choose Area"/>

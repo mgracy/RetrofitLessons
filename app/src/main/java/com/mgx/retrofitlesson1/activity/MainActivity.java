@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.R;
 import com.mgx.retrofitlesson1.model.Repo;
 import com.mgx.retrofitlesson1.util.LogUtil;
+import com.mgx.retrofitlesson1.util.SlidingLayout;
 
 import org.litepal.LitePal;
 
@@ -37,12 +39,12 @@ public class MainActivity extends BaseActivity {
 //    - @Url: 不要以 / 开头
     private static final String TAG = "MainActivity";
     public static final String BASE_URL = "https://api.github.com/";
-//    https://api.github.com/repos/square/retrofit/contributors
+    //    https://api.github.com/repos/square/retrofit/contributors
     public static final String mUSER = "mgracy";
     public static final String mOWNER = "square";
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
-    private Button btnLoadRepo, btnListContributor,toHSProject;
+    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu;
     private ListView list_view;
     GitHubService service;
 
@@ -59,7 +61,7 @@ public class MainActivity extends BaseActivity {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
-        Retrofit retrofit  = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -69,7 +71,7 @@ public class MainActivity extends BaseActivity {
         return retrofit.create(GitHubService.class);
     }
 
-    private  void initUI(){
+    private void initUI() {
         tvType = (TextView) findViewById(R.id.tvType);
         tvName = (TextView) findViewById(R.id.tvName);
         tvEmail = (TextView) findViewById(R.id.tvEmail);
@@ -77,10 +79,48 @@ public class MainActivity extends BaseActivity {
         btnLoadRepo = (Button) findViewById(R.id.load_repo);
         btnListContributor = (Button) findViewById(R.id.list_contributor);
         toHSProject = (Button) findViewById(R.id.toHSProject);
+        toMenu = (Button) findViewById(R.id.toMenu);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
+//        toHSProject.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                LogUtil.i(this.getClass().getSimpleName(), "onTouch: motionEvent(" + motionEvent.getAction() + ")");
+//                return false;
+//            }
+//        });
         toHSProject.setOnClickListener(mOnClickListener);
+        toMenu.setOnClickListener(mOnClickListener);
     }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        Log.d(TAG, "onTouchEvent: ");
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_UP:
+//                Log.d(TAG, "onTouchEvent: ACTION_UP");
+//                break;
+//            case MotionEvent.EDGE_LEFT:
+//                Log.d(TAG, "onTouchEvent: EDGE_LEFT");
+//                break;
+//            case MotionEvent.ACTION_DOWN:
+//                Log.d(TAG, "onTouchEvent: ACTION_DOWN");
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                Log.d(TAG, "onTouchEvent: ACTION_MOVE");
+//                break;
+//            case MotionEvent.ACTION_BUTTON_PRESS:
+//                Log.d(TAG, "onTouchEvent: ACTION_BUTTON_PRESS");
+//                break;
+//            case MotionEvent.ACTION_BUTTON_RELEASE:
+//                Log.d(TAG, "onTouchEvent: ACTION_BUTTON_RELEASE");
+//                break;
+//            default:
+//                break;
+//        }
+//        return true;
+//    }
+//
 
     private void clearItem() {
         tvEmail.setText("");
@@ -94,7 +134,7 @@ public class MainActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
+            switch (view.getId()) {
                 case R.id.load_repo:
                     service = buildRetrofit();
                     Call<Repo> call = service.loadRepo(mUSER);
@@ -112,7 +152,7 @@ public class MainActivity extends BaseActivity {
 
                         @Override
                         public void onFailure(Call<Repo> call, Throwable t) {
-                            Log.e(TAG, "onFailure: ", t );
+                            Log.e(TAG, "onFailure: ", t);
                         }
                     });
                     break;
@@ -125,7 +165,7 @@ public class MainActivity extends BaseActivity {
                         public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
                             List<String> lists = new ArrayList<String>();
                             for (Contributor contributor : response.body()) {
-                                lists.add("Login: " + contributor.getLogin()  +"\t\tcontributions: " + contributor.getContributions());
+                                lists.add("Login: " + contributor.getLogin() + "\t\tcontributions: " + contributor.getContributions());
                                 Log.d(TAG, "onResponse: Login is " + contributor.getLogin());
                                 Log.d(TAG, "onResponse: Html_url is " + contributor.getHtml_url());
                                 Log.d(TAG, "onResponse: contributions is " + contributor.getContributions());//
@@ -142,17 +182,22 @@ public class MainActivity extends BaseActivity {
                     });
                     break;
                 case R.id.toHSProject:
+
+                    LogUtil.i(this.getClass().getSimpleName(), "onClick: ");
+                    break;
 //                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
 //                    startActivity(intent);
 //                    openNewActivity(ChooseAreaActivity.class);
-                    try{
-                        SQLiteDatabase db = LitePal.getDatabase();
-                        Toast.makeText(MainActivity.this, "Connect db successfully", Toast.LENGTH_SHORT).show();
-                    }catch (Exception ex){
-                        ex.printStackTrace();
-                        LogUtil.i(this.getClass().getSimpleName(), "onClick: Thread Id is " + Thread.currentThread().getId() + "\t" + ex.getMessage());
-                        Toast.makeText(MainActivity.this, "Failed to connect db", Toast.LENGTH_SHORT).show();
-                    }
+//                    try{
+//                        SQLiteDatabase db = LitePal.getDatabase();
+//                        Toast.makeText(MainActivity.this, "Connect db successfully", Toast.LENGTH_SHORT).show();
+//                    }catch (Exception ex){
+//                        ex.printStackTrace();
+//                        LogUtil.i(this.getClass().getSimpleName(), "onClick: Thread Id is " + Thread.currentThread().getId() + "\t" + ex.getMessage());
+//                        Toast.makeText(MainActivity.this, "Failed to connect db", Toast.LENGTH_SHORT).show();
+//                    }
+                case R.id.toMenu:
+                    openNewActivity(SlidingActivity.class);
                 default:
                     break;
             }
