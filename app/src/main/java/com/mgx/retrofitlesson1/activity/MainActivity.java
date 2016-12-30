@@ -1,11 +1,8 @@
 package com.mgx.retrofitlesson1.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,12 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mgx.retrofitlesson1.model.Contributor;
-import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.R;
+import com.mgx.retrofitlesson1.model.Contributor;
 import com.mgx.retrofitlesson1.model.Repo;
+import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.util.LogUtil;
-import com.mgx.retrofitlesson1.util.SlidingLayout;
 
 import org.litepal.LitePal;
 
@@ -44,7 +40,7 @@ public class MainActivity extends BaseActivity {
     public static final String mOWNER = "square";
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
-    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu;
+    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner;
     private ListView list_view;
     GitHubService service;
 
@@ -80,6 +76,7 @@ public class MainActivity extends BaseActivity {
         btnListContributor = (Button) findViewById(R.id.list_contributor);
         toHSProject = (Button) findViewById(R.id.toHSProject);
         toMenu = (Button) findViewById(R.id.toMenu);
+        ibBanner = (Button) findViewById(R.id.ibBanner);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
 //        toHSProject.setOnTouchListener(new View.OnTouchListener() {
@@ -91,6 +88,7 @@ public class MainActivity extends BaseActivity {
 //        });
         toHSProject.setOnClickListener(mOnClickListener);
         toMenu.setOnClickListener(mOnClickListener);
+        ibBanner.setOnClickListener(mOnClickListener);
     }
 //
 //    @Override
@@ -184,20 +182,25 @@ public class MainActivity extends BaseActivity {
                 case R.id.toHSProject:
 
                     LogUtil.i(this.getClass().getSimpleName(), "onClick: ");
-                    break;
 //                    Intent intent = new Intent(MainActivity.this, DormActivity.class);
 //                    startActivity(intent);
 //                    openNewActivity(ChooseAreaActivity.class);
-//                    try{
-//                        SQLiteDatabase db = LitePal.getDatabase();
-//                        Toast.makeText(MainActivity.this, "Connect db successfully", Toast.LENGTH_SHORT).show();
-//                    }catch (Exception ex){
-//                        ex.printStackTrace();
-//                        LogUtil.i(this.getClass().getSimpleName(), "onClick: Thread Id is " + Thread.currentThread().getId() + "\t" + ex.getMessage());
-//                        Toast.makeText(MainActivity.this, "Failed to connect db", Toast.LENGTH_SHORT).show();
-//                    }
+                    try{
+                        SQLiteDatabase db = LitePal.getDatabase();
+                        Toast.makeText(MainActivity.this, "Connect db successfully", Toast.LENGTH_SHORT).show();
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                        LogUtil.i(this.getClass().getSimpleName(), "onClick: Thread Id is " + Thread.currentThread().getId() + "\t" + ex.getMessage());
+                        Toast.makeText(MainActivity.this, "Failed to connect db", Toast.LENGTH_SHORT).show();
+                    }
+                break;
                 case R.id.toMenu:
                     openNewActivity(SlidingActivity.class);
+                    break;
+                case R.id.ibBanner:
+//                    openNewActivity(BannerActivity.class);
+                    Toast.makeText(MainActivity.this, "This function is under construction...", Toast.LENGTH_SHORT).show();
+                    break;
                 default:
                     break;
             }

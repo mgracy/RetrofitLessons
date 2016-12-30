@@ -20,6 +20,7 @@
         <activity android:name=".activity.DormActivity" android:label="HSProject">
         </activity>
         <activity android:name=".activity.ChooseAreaActivity" android:label="Choose Area"/>
+        <activity android:name=".activity.BannerActivity"></activity>
     </application>
 
 </manifest>
