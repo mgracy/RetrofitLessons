@@ -4,11 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -35,24 +31,24 @@ public class DormActivity extends Activity {
         etUrl= (EditText) findViewById(R.id.etUrl);
         btnGo = (Button) findViewById(R.id.btnGo);
         web_view = (WebView) findViewById(R.id.web_view);
-        btnGo.setOnClickListener(mOnClickListener);
+//        btnGo.setOnClickListener(mOnClickListener);
     }
 
-    View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            web_view.getSettings().setJavaScriptEnabled(true);
-            web_view.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-            web_view.setWebViewClient(new WebViewClient(){
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                    web_view.loadUrl(request.getUrl().toString());
-                    return true;
-                }
-            });
-            web_view.loadUrl(etUrl.getText().toString().trim());
-        }
-    };
+//    View.OnClickListener mOnClickListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            web_view.getSettings().setJavaScriptEnabled(true);
+//            web_view.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+//            web_view.setWebViewClient(new WebViewClient(){
+//                @Override
+//                public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                    web_view.loadUrl(request.getUrl().toString());
+//                    return true;
+//                }
+//            });
+//            web_view.loadUrl(etUrl.getText().toString().trim());
+//        }
+//    };
 
     //改写物理键返回的逻辑
     @Override

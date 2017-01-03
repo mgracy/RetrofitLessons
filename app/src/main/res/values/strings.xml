@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RetrofitLesson1</string>
+    <string name="activity_sensor">传感器</string>
+    <string name="voice_recognizer">语音识别</string>
+    <string name="open_third_activity">打开Activity三</string>
+    <string name="open_main_activity">打开主Activity</string>
+    <string name="activity_taskaffinity">com.mgx.task1</string>
+    <string name="open_second_activity">打开Activity二</string>
 </resources>
