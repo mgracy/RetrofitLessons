@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activity.ChooseAreaActivity" android:label="Choose Area"/>
         <activity android:name=".activity.BannerActivity"></activity>
+        <activity android:name=".activity.SensorActivity" android:label="@string/activity_sensor"></activity>
+        <activity android:name=".activity.VoiceRecognizerActivity" android:label="语音识别"></activity>
     </application>
 
 </manifest>

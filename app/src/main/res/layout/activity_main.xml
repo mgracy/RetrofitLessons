@@ -23,21 +23,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="List contributor"/>
+
         <Button
             android:id="@+id/toHSProject"
-            android:background="@drawable/circle"
             android:layout_width="32sp"
-            android:layout_height="32sp"/>
+            android:layout_height="32sp"
+            android:background="@drawable/circle"/>
+
         <Button
             android:id="@+id/toMenu"
-            android:background="@drawable/menu"
             android:layout_width="32sp"
-            android:layout_height="32sp"/>
+            android:layout_height="32sp"
+            android:background="@drawable/menu"/>
+
         <Button
             android:id="@+id/ibBanner"
-            android:background="@drawable/banner"
             android:layout_width="32dp"
-            android:layout_height="32dp"/>
+            android:layout_height="32dp"
+            android:background="@drawable/banner"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/toVoice"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/voice"/>
+
     </LinearLayout>
 
     <TextView

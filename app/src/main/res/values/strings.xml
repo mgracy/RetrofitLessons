@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RetrofitLesson1</string>
+    <string name="activity_sensor">传感器</string>
+    <string name="voice_recognizer">语音识别</string>
 </resources>
