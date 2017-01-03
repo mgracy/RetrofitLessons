@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,8 @@ public class MainActivity extends BaseActivity {
     public static final String mOWNER = "square";
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
-    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner;
+    private EditText etSavaInstanceState;
+    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toLaunchMode;
     private ListView list_view;
     GitHubService service;
 
@@ -71,12 +73,14 @@ public class MainActivity extends BaseActivity {
         tvType = (TextView) findViewById(R.id.tvType);
         tvName = (TextView) findViewById(R.id.tvName);
         tvEmail = (TextView) findViewById(R.id.tvEmail);
+        etSavaInstanceState = (EditText) findViewById(R.id.etSavaInstanceState);
         list_view = (ListView) findViewById(R.id.list_view);
         btnLoadRepo = (Button) findViewById(R.id.load_repo);
         btnListContributor = (Button) findViewById(R.id.list_contributor);
         toHSProject = (Button) findViewById(R.id.toHSProject);
         toMenu = (Button) findViewById(R.id.toMenu);
         ibBanner = (Button) findViewById(R.id.ibBanner);
+        toLaunchMode = (Button) findViewById(R.id.toLaunchMode);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
 //        toHSProject.setOnTouchListener(new View.OnTouchListener() {
@@ -89,6 +93,7 @@ public class MainActivity extends BaseActivity {
         toHSProject.setOnClickListener(mOnClickListener);
         toMenu.setOnClickListener(mOnClickListener);
         ibBanner.setOnClickListener(mOnClickListener);
+        toLaunchMode.setOnClickListener(mOnClickListener);
     }
 //
 //    @Override
@@ -200,6 +205,9 @@ public class MainActivity extends BaseActivity {
                 case R.id.ibBanner:
 //                    openNewActivity(BannerActivity.class);
                     Toast.makeText(MainActivity.this, "This function is under construction...", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.toLaunchMode:
+                    openNewActivity(LaunchModeActivity.class);
                     break;
                 default:
                     break;

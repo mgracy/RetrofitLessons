@@ -14,7 +14,7 @@ import com.mgx.retrofitlesson1.util.SlidingLayout;
  * Created by glmgracy on 16/12/26.
  */
 
-public class SlidingActivity extends Activity {
+public class SlidingActivity extends BaseActivity {
     /**
      * 侧滑布局对象，用于通过手指滑动将左侧的菜单布局进行显示或隐藏。
      */
