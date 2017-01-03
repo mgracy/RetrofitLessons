@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
     public static final String mOWNER = "square";
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
-    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toVoice;
+    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toVoice, toSecondAty;
     private ListView list_view;
     GitHubService service;
 
@@ -78,6 +78,7 @@ public class MainActivity extends BaseActivity {
         toMenu = (Button) findViewById(R.id.toMenu);
         ibBanner = (Button) findViewById(R.id.ibBanner);
         toVoice = (Button) findViewById(R.id.toVoice);
+        toSecondAty = (Button) findViewById(R.id.toSecondAty);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
 //        toHSProject.setOnTouchListener(new View.OnTouchListener() {
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
         toMenu.setOnClickListener(mOnClickListener);
         ibBanner.setOnClickListener(mOnClickListener);
         toVoice.setOnClickListener(mOnClickListener);
+        toSecondAty.setOnClickListener(mOnClickListener);
     }
 //
 //    @Override
@@ -208,6 +210,9 @@ public class MainActivity extends BaseActivity {
                     openNewActivity(VoiceRecognizerActivity.class);
 //                    openNewActivity(BannerActivity.class);
 //                    Toast.makeText(MainActivity.this, "This function is under construction...", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.toSecondAty:
+                    openNewActivity(SecondActivity.class);
                     break;
                 default:
                     break;

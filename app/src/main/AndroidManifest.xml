@@ -23,6 +23,8 @@
         <activity android:name=".activity.BannerActivity"></activity>
         <activity android:name=".activity.SensorActivity" android:label="@string/activity_sensor"></activity>
         <activity android:name=".activity.VoiceRecognizerActivity" android:label="语音识别"></activity>
+        <activity android:name=".activity.SecondActivity" android:label="Second Activity" android:launchMode="singleTask" android:taskAffinity="@string/activity_taskaffinity"></activity>
+        <activity android:name=".activity.ThirdActivity" android:label="Third Activity" android:launchMode="singleTask" android:taskAffinity="@string/activity_taskaffinity"></activity>
     </application>
 
 </manifest>
