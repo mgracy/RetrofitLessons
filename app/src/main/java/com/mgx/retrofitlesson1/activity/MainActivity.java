@@ -16,6 +16,7 @@ import com.mgx.retrofitlesson1.model.Contributor;
 import com.mgx.retrofitlesson1.model.Repo;
 import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.util.LogUtil;
+import com.mgx.retrofitlesson1.util.UserManager;
 
 import org.litepal.LitePal;
 
@@ -51,6 +52,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+        UserManager.sUserId = 2;
+        LogUtil.i(getClass().getSimpleName(), "onCreate: TaskId: " + getTaskId() + ", sUserId: " + UserManager.sUserId);
     }
 
     private GitHubService buildRetrofit() {

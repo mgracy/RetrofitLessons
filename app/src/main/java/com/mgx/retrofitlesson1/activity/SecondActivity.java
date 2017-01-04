@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.mgx.retrofitlesson1.R;
 import com.mgx.retrofitlesson1.util.LogUtil;
+import com.mgx.retrofitlesson1.util.UserManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +33,7 @@ public class SecondActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         ButterKnife.bind(this);
+        LogUtil.i(getClass().getSimpleName(), "onCreate: TaskId: " + getTaskId() + ", sUserId: " + UserManager.sUserId);
     }
 
     @OnClick(R.id.btnToThirdActivity)
