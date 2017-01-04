@@ -26,6 +26,15 @@
         <activity android:name=".activity.VoiceRecognizerActivity" android:label="语音识别"></activity>
         <activity android:name=".activity.SecondActivity" android:label="Second Activity" android:launchMode="singleTask" android:taskAffinity="@string/activity_taskaffinity"></activity>
         <activity android:name=".activity.ThirdActivity" android:label="Third Activity" android:launchMode="singleTask" android:taskAffinity="@string/activity_taskaffinity"></activity>
+        <activity android:name=".activity.ShareActivity">
+            <intent-filter>
+                <action android:name="com.mgx.abcd.a" />
+                <category android:name="com.mgx.abcd.b"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*" android:scheme="http" android:host="45.78.55.42" android:port="80" />
+                <data android:mimeType="text/plain" android:scheme="http" android:host="45.78.55.42" android:port="80" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

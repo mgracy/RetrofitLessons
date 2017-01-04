@@ -94,6 +94,12 @@ public class BaseActivity extends Activity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        LogUtil.i(getClass().getSimpleName(), "onNewIntent: TaskId: " + getTaskId() + ", ThreadId: " + Thread.currentThread().getId());
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         LogUtil.i(this.getClass().getSimpleName(), "onConfigurationChanged: " + newConfig.orientation);

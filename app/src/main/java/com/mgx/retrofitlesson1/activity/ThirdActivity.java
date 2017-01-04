@@ -1,5 +1,6 @@
 package com.mgx.retrofitlesson1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -14,8 +15,11 @@ import butterknife.OnClick;
  */
 
 public class ThirdActivity extends BaseActivity {
+    public static final String DATA_RETURN = "data_return";
     @BindView(R.id.btnToMainAty)
     Button btnToMainAty;
+    @BindView(R.id.btnToSecondAty)
+    Button btnToSecondAty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,14 @@ public class ThirdActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btnToMainAty)
-    void toMainAty(){
+    void toMainAty() {
         openNewActivity(MainActivity.class);
+    }
+    @OnClick(R.id.btnToSecondAty)
+    void toSecondAty(){
+        Intent intent = new Intent();
+        intent.putExtra(DATA_RETURN, getResources().getString(R.string.open_second_activity));
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
