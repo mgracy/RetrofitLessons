@@ -14,15 +14,16 @@
 
         <Button
             android:id="@+id/load_repo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Load repo"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/repo"/>
 
         <Button
             android:id="@+id/list_contributor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List contributor"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="User"
+            />
 
         <Button
             android:id="@+id/toHSProject"
@@ -41,6 +42,13 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/banner"/>
+
+        <Button
+            android:id="@+id/toLaunchMode"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/mode"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -59,6 +67,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/etSavaInstanceState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tvType"

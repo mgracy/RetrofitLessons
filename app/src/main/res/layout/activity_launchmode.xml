@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvStandard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standard"/>
+
+    <TextView
+        android:id="@+id/tvSingleTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single Top"/>
+
+    <TextView
+        android:id="@+id/tvSingleTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single Task"/>
+
+    <TextView
+        android:id="@+id/tvSingleInstance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single Instance"/>
+
+    <Button
+        android:id="@+id/btnSingleTask"
+        android:text="Single Task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
