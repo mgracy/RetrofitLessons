@@ -1,9 +1,12 @@
 package com.mgx.retrofitlesson1.activity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Process;
 
 import com.mgx.retrofitlesson1.util.ActivityCollector;
 import com.mgx.retrofitlesson1.util.LogUtil;
@@ -22,6 +25,7 @@ public class BaseActivity extends Activity {
             LogUtil.i(this.getClass().getSimpleName(), "onCreate: time is " + savedInstanceState.getString("time") + ", and execute_user is " + savedInstanceState.getString("execute_user"));
         }
         ActivityCollector.addActivity(this);
+        LogUtil.i(getClass().getSimpleName(), "onCreate: pid: " + Process.myPid() + ", processName: " + getCurrentProcessName(this));
         LogUtil.i(this.getClass().getSimpleName(), "onCreate: TaskID: " + this.getTaskId() + ", ThreadId: " + Thread.currentThread().getId());
     }
 
@@ -110,5 +114,16 @@ public class BaseActivity extends Activity {
         Intent intent = new Intent();
         intent.setClass(this, clazz);
         startActivity(intent);
+    }
+
+    public static String getCurrentProcessName(Context context){
+        int pid= Process.myPid();
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : activityManager.getRunningAppProcesses()) {
+            if(runningAppProcessInfo.pid == pid){
+                return runningAppProcessInfo.processName;
+            }
+        }
+        return null;
     }
 }
