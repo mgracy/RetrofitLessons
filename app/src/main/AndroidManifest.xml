@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.mgx.retrofitlesson1">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -9,7 +10,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" android:configChanges="orientation|screenSize">
+        <activity
+            android:name=".activity.ObjectTran"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_serialize_parcel">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,13 +21,21 @@
             </intent-filter>
         </activity>
         <activity android:name="com.mgx.retrofitlesson1.activity.SlidingActivity"></activity>
-        <activity android:name=".activity.DormActivity" android:label="HSProject">
+        <activity
+            android:name=".activity.DormActivity"
+            android:label="HSProject">
         </activity>
-        <activity android:name=".activity.ChooseAreaActivity" android:label="Choose Area"/>
+        <activity
+            android:name=".activity.ChooseAreaActivity"
+            android:label="Choose Area"/>
         <activity android:name=".activity.BannerActivity"></activity>
         <activity android:name=".activity.LaunchModeActivity"></activity>
-        <activity android:name=".activity.SensorActivity" android:label="@string/activity_sensor"></activity>
-        <activity android:name=".activity.VoiceRecognizerActivity" android:label="语音识别"></activity>
+        <activity
+            android:name=".activity.SensorActivity"
+            android:label="@string/activity_sensor"></activity>
+        <activity
+            android:name=".activity.VoiceRecognizerActivity"
+            android:label="语音识别"></activity>
         <activity
             android:name=".activity.SecondActivity"
             android:label="Second Activity"
@@ -38,13 +50,25 @@
             android:taskAffinity="@string/activity_taskaffinity"></activity>
         <activity android:name=".activity.ShareActivity">
             <intent-filter>
-                <action android:name="com.mgx.abcd.a" />
+                <action android:name="com.mgx.abcd.a"/>
+
                 <category android:name="com.mgx.abcd.b"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="image/*" android:scheme="http" android:host="45.78.55.42" android:port="80" />
-                <data android:mimeType="text/plain" android:scheme="http" android:host="45.78.55.42" android:port="80" />
+
+                <data
+                    android:host="45.78.55.42"
+                    android:mimeType="image/*"
+                    android:port="80"
+                    android:scheme="http"/>
+                <data
+                    android:host="45.78.55.42"
+                    android:mimeType="text/plain"
+                    android:port="80"
+                    android:scheme="http"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ObjectSerializable"></activity>
+        <activity android:name=".activity.ObjectParcelable"></activity>
     </application>
 
 </manifest>

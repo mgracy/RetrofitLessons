@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="两种通过意图传递对象的方法（Serializable, Parcelable）"/>
+
+    <Button
+        android:id="@+id/btnSerializable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/serializable"/>
+
+    <Button
+        android:id="@+id/btnParcelable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/parcelable"/>
+
+</LinearLayout>

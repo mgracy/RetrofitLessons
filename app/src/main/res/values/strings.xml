@@ -6,4 +6,7 @@
     <string name="open_main_activity">打开主Activity</string>
     <string name="activity_taskaffinity">com.mgx.task1</string>
     <string name="open_second_activity">打开Activity二</string>
+    <string name="title_serialize_parcel">Serialize与Parcel</string>
+    <string name="serializable">Serializable</string>
+    <string name="parcelable">Parcelable</string>
 </resources>
