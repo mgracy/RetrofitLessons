@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.ObjectTran"
+            android:name=".activity.TouchSlopActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_serialize_parcel">
             <intent-filter>
