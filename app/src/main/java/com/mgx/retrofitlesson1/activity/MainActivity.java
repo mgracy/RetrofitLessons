@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.mgx.retrofitlesson1.R;
 import com.mgx.retrofitlesson1.model.Contributor;
+import com.mgx.retrofitlesson1.model.Customer;
 import com.mgx.retrofitlesson1.model.Repo;
 import com.mgx.retrofitlesson1.service.GitHubService;
 import com.mgx.retrofitlesson1.util.LogUtil;
@@ -23,6 +24,8 @@ import org.litepal.LitePal;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -46,6 +49,7 @@ public class MainActivity extends BaseActivity {
     private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toLaunchMode, toVoice, toSecondAty;
     private ListView list_view;
     GitHubService service;
+    Realm mRealm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +144,6 @@ public class MainActivity extends BaseActivity {
         tvType.setVisibility(View.GONE);
         tvName.setVisibility(View.GONE);
     }
-
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

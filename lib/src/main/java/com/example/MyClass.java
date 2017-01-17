@@ -8,6 +8,7 @@ import java.net.URL;
 
 public class MyClass {
     public static final int TIME_OUT = 8000;
+    public static final String address= "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc9dc626db917f955&redirect_uri=http://45.78.55.42/wordpress/?p=84&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
     public static void main(String[] args){
         System.out.println("Hello World");
 
@@ -17,7 +18,7 @@ public class MyClass {
 
     public static String getAccessToken(){
         System.out.println("start");
-        String address = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx54e3c3b6848350b9&secret=2d0224d2c54e8c50ac0b003fbcf93148";
+        //String address = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx54e3c3b6848350b9&secret=2d0224d2c54e8c50ac0b003fbcf93148";
         HttpURLConnection connection = null;
         try {
             URL url = new URL(address);
@@ -35,6 +36,8 @@ public class MyClass {
             while ((line = reader.readLine()) != null) {
                 response.append(line);
             }
+            System.out.println("response.toString");
+            System.out.println(response.toString());
             return response.toString();
         }catch(Exception e){
             e.printStackTrace();
