@@ -11,6 +11,15 @@ import io.realm.annotations.RealmClass;
 public class Customer extends RealmObject {
     private String name;
     private int age;
+    private int sex;
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
