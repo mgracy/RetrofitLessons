@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
     public static final String mREPO = "retrofit";
     private TextView tvType, tvName, tvEmail;
     private EditText etSavaInstanceState;
-    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toLaunchMode, toVoice, toSecondAty;
+    private Button btnLoadRepo, btnListContributor, toHSProject, toMenu, ibBanner, toLaunchMode, toVoice, toSecondAty, toRxJava;
     private ListView list_view;
     GitHubService service;
     Realm mRealm;
@@ -92,6 +92,9 @@ public class MainActivity extends BaseActivity {
         toSecondAty = (Button) findViewById(R.id.toSecondAty);
         btnLoadRepo.setOnClickListener(mOnClickListener);
         btnListContributor.setOnClickListener(mOnClickListener);
+        toRxJava = (Button) findViewById(R.id.toRxJava);
+        toRxJava.setOnClickListener(mOnClickListener);
+
 //        toHSProject.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
 //            public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -227,6 +230,10 @@ public class MainActivity extends BaseActivity {
                     break;
                 case R.id.toLaunchMode:
                     openNewActivity(LaunchModeActivity.class);
+                    break;
+
+                case R.id.toRxJava:
+                    openNewActivity(RxJavaActivity.class);
                     break;
                 default:
                     break;

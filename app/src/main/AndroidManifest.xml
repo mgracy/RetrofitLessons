@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.RealmActivity"
+            android:name=".activity.BottomNavActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Android Realm介绍">
+            android:label="微信">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -69,6 +69,7 @@
         </activity>
         <activity android:name=".activity.ObjectSerializable"></activity>
         <activity android:name=".activity.ObjectParcelable"></activity>
+        <activity android:name=".activity.RxJavaActivity" android:theme="@style/Base.Theme.AppCompat"></activity>
     </application>
 
 </manifest>

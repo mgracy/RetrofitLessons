@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/transparent">
+
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/wechat"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_toLeftOf="@+id/btnPlus"
+            android:src="@drawable/search"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageButton
+            android:layout_alignParentRight="true"
+            android:id="@+id/btnPlus"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorGrey"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_menu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtWechat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/tab_menu_wechat"
+            android:gravity="center"
+            android:text="@string/wechat"
+            android:textColor="@drawable/tab_menu_wechat_text"/>
+
+        <TextView
+            android:id="@+id/txtContact"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/tab_menu_contact"
+            android:gravity="center"
+            android:text="@string/contact"
+            android:textColor="@drawable/tab_menu_wechat_text"/>
+
+
+        <TextView
+            android:id="@+id/txtDiscovery"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/tab_menu_discovery"
+            android:gravity="center"
+            android:text="@string/discovery"
+            android:textColor="@drawable/tab_menu_wechat_text"/>
+
+
+        <TextView
+            android:id="@+id/txtMyself"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/tab_menu_myself"
+            android:gravity="center"
+            android:text="@string/myself"
+            android:textColor="@drawable/tab_menu_wechat_text"/>
+    </LinearLayout>
+    <!--android:background="@drawable/tab_menu_bg"-->
+    <View
+        android:id="@+id/div_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_above="@id/tab_menu"
+        android:background="@color/colorGrey"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tab_menu"
+        android:layout_below="@id/tab_title"
+        android:background="@color/white"></FrameLayout>
+</RelativeLayout>
