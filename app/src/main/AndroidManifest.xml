@@ -67,9 +67,18 @@
                     android:scheme="http"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.AntForeastActivity"
+            android:label="@string/antforeast_title"></activity>
         <activity android:name=".activity.ObjectSerializable"></activity>
         <activity android:name=".activity.ObjectParcelable"></activity>
-        <activity android:name=".activity.RxJavaActivity" android:theme="@style/Base.Theme.AppCompat"></activity>
+        <activity
+            android:name=".activity.RxJavaActivity"
+            android:theme="@style/Base.Theme.AppCompat"></activity>
+        <activity
+            android:name=".activity.AntForeastInviteDialog"
+            android:label="@string/antforeast_title"
+            android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 </manifest>
