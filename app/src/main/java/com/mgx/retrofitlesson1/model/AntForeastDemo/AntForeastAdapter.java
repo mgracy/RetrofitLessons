@@ -1,5 +1,6 @@
 package com.mgx.retrofitlesson1.model.AntForeastDemo;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -73,6 +74,10 @@ public class AntForeastAdapter extends ArrayAdapter<AntForeast> {
             viewHolder.topInvite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    new AlertDialog.Builder(getContext())
+//                            .setTitle("")
+//                            .setView(R.layout.dialog_antforeast_invite)
+//                            .show();
 //                    new AlertDialog.Builder(getActivity())
 //                            .setTitle(getTitleRes())
 //                            .setView(getActivity().getLayoutInflater().inflate(getDialogRes(), null))

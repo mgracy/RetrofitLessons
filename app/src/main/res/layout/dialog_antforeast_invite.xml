@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="230dp"
+                android:layout_height="180dp"
                 android:orientation="vertical">
 
     <ImageView
@@ -19,15 +19,17 @@
         android:layout_below="@+id/ivAntForeast"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
-        android:text="@string/invite_friend_to_antforeast"/>
+        android:text="@string/invite_friend_to_antforeast"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
 
     <TextView
-        android:layout_marginLeft="15dp"
         android:id="@+id/tvInviteDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvInviteFriendToAntForeast"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="18dp"
         android:text="@string/invite_description"/>
 
     <Button
@@ -37,5 +39,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorGreen"
         android:text="@string/send_invite"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
 </RelativeLayout>

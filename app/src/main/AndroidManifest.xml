@@ -78,7 +78,7 @@
         <activity
             android:name=".activity.AntForeastInviteDialog"
             android:label="@string/antforeast_title"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@style/dialog"></activity>
     </application>
 
 </manifest>

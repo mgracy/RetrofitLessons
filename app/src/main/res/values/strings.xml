@@ -60,7 +60,7 @@
     <string name="antforeast_title">蚂蚁森林</string>
     <string name="antforeast_invite">邀请</string>
     <string name="invite_friend_to_antforeast">邀请好友加入</string>
-    <string name="invite_description">加入蚂蚁森林，抵御沙漠化，和我一起，开始种村</string>
+    <string name="invite_description">加入蚂蚁森林，抵御沙漠化，和我一起，开始种树。</string>
     <string name="send_invite">发送</string>
 
 </resources>
