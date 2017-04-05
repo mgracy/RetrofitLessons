@@ -7,32 +7,38 @@
         android:id="@+id/tab_title"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/transparent">
+        android:background="@color/grey21">
 
         <TextView
             android:id="@+id/txt_top"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/wechat"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorDarkGrey"
+            android:textColor="@color/white"
             android:textSize="18sp"/>
 
         <ImageButton
             android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="8dp"
             android:layout_toLeftOf="@+id/btnPlus"
-            android:src="@drawable/search"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:background="@color/transparent"
+            android:src="@drawable/search"/>
+
         <ImageButton
-            android:layout_alignParentRight="true"
             android:id="@+id/btnPlus"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/plus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/transparent"
+            android:src="@drawable/plus"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
