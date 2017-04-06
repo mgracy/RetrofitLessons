@@ -8,11 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.view.ViewGroup.LayoutParams;
 
 import com.mgx.retrofitlesson1.R;
+import com.mgx.retrofitlesson1.model.PopupWindowDemo.ActionItem;
+import com.mgx.retrofitlesson1.model.PopupWindowDemo.TitlePopup;
+import com.mgx.retrofitlesson1.model.PopupWindowDemo.WechatContextMenuActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +28,7 @@ import butterknife.OnClick;
  * Created by glmgracy on 17/3/30.
  */
 
-public class BottomNavActivity extends Activity {
+public class BottomNavActivity extends BaseActivity {
     private static final String TAG = "BottomNavActivity";
     @BindView(R.id.txt_top)
     TextView txtTop;
@@ -49,12 +55,25 @@ public class BottomNavActivity extends Activity {
     private FourthFragment f4;
     private FragmentManager fragmentManager;
 
+    // 定义标题栏上的按钮
+    private ImageButton titleBtn;
+
+    // 定义标题栏弹窗按钮
+    private TitlePopup titlePopup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_bottom_nav);
         ButterKnife.bind(this);
+        initView();
+        initData();
+    }
+    
+    @OnClick(R.id.btnPlus)
+    void wechatContextMenu(View v){
+        titlePopup.show(v);
     }
 
     @OnClick({R.id.txtWechat, R.id.txtContact, R.id.txtDiscovery, R.id.txtMyself})
@@ -132,5 +151,21 @@ public class BottomNavActivity extends Activity {
         txtContact.setSelected(false);
         txtDiscovery.setSelected(false);
         txtMyself.setSelected(false);
+    }
+
+
+    private void initView(){
+        // 实例化标题栏弹窗
+        titlePopup = new TitlePopup(this, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    }
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        // 给标题栏弹窗添加子类
+        titlePopup.addAction(new ActionItem(this, "发起聊天", R.drawable.mm_title_btn_compose_normal));
+        titlePopup.addAction(new ActionItem(this, "听筒模式", R.drawable.mm_title_btn_receiver_normal));
+        titlePopup.addAction(new ActionItem(this, "登录网页", R.drawable.mm_title_btn_keyboard_normal));
+        titlePopup.addAction(new ActionItem(this, "扫一扫", R.drawable.mm_title_btn_qrcode_normal));
     }
 }

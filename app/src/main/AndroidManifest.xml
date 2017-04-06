@@ -79,6 +79,7 @@
             android:name=".activity.AntForeastInviteDialog"
             android:label="@string/antforeast_title"
             android:theme="@style/dialog"></activity>
+        <activity android:name=".model.PopupWindowDemo.WechatContextMenuActivity"></activity>
     </application>
 
 </manifest>
