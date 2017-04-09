@@ -24,10 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/btnPlus"
             android:background="@color/transparent"
-            android:src="@drawable/search"/>
+            android:src="@drawable/search24"/>
 
         <ImageButton
             android:id="@+id/btnPlus"
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:background="@color/transparent"
-            android:src="@drawable/plus"/>
+            android:src="@drawable/plus24"/>
 
         <View
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
     <LinearLayout
         android:id="@+id/tab_menu"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="3dp"
+            android:drawablePadding="1dp"
             android:drawableTop="@drawable/tab_menu_wechat"
             android:gravity="center"
             android:text="@string/wechat"
@@ -69,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="3dp"
+            android:drawablePadding="1dp"
             android:drawableTop="@drawable/tab_menu_contact"
             android:gravity="center"
             android:text="@string/contact"
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="3dp"
+            android:drawablePadding="1dp"
             android:drawableTop="@drawable/tab_menu_discovery"
             android:gravity="center"
             android:text="@string/discovery"
@@ -93,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="3dp"
+            android:drawablePadding="1dp"
             android:drawableTop="@drawable/tab_menu_myself"
             android:gravity="center"
             android:text="@string/myself"

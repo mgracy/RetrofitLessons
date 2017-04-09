@@ -157,15 +157,39 @@ public class BottomNavActivity extends BaseActivity {
     private void initView(){
         // 实例化标题栏弹窗
         titlePopup = new TitlePopup(this, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        titlePopup.setItemOnClickListener(new TitlePopup.OnItemOnClickListener() {
+            @Override
+            public void onItemClick(ActionItem item, int position) {
+                switch (position){
+                    case 0:
+                        Toast.makeText(BottomNavActivity.this, "0", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(BottomNavActivity.this, "1", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(BottomNavActivity.this, "2", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(BottomNavActivity.this, "3", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
     /**
      * 初始化数据
      */
     private void initData() {
         // 给标题栏弹窗添加子类
-        titlePopup.addAction(new ActionItem(this, "发起聊天", R.drawable.mm_title_btn_compose_normal));
-        titlePopup.addAction(new ActionItem(this, "听筒模式", R.drawable.mm_title_btn_receiver_normal));
-        titlePopup.addAction(new ActionItem(this, "登录网页", R.drawable.mm_title_btn_keyboard_normal));
+        titlePopup.addAction(new ActionItem(this, "发起群聊", R.drawable.mm_title_btn_compose_normal));
+        titlePopup.addAction(new ActionItem(this, "添加朋友", R.drawable.mm_title_btn_receiver_normal));
         titlePopup.addAction(new ActionItem(this, "扫一扫", R.drawable.mm_title_btn_qrcode_normal));
+        titlePopup.addAction(new ActionItem(this, "收付款", R.drawable.mm_title_btn_keyboard_normal));
+//        titlePopup.addAction(new ActionItem(this, "帮助与反馈", R.drawable.envelope24));
+//        titlePopup.addAction(new ActionItem(this, "发起聊天", R.drawable.mm_title_btn_compose_normal));
+//        titlePopup.addAction(new ActionItem(this, "听筒模式", R.drawable.mm_title_btn_receiver_normal));
+//        titlePopup.addAction(new ActionItem(this, "登录网页", R.drawable.mm_title_btn_keyboard_normal));
+//        titlePopup.addAction(new ActionItem(this, "扫一扫", R.drawable.mm_title_btn_qrcode_normal));
     }
 }

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/myself_on"/>
+        android:src="@drawable/antforeast48"/>
 
     <TextView
         android:id="@+id/tvInviteFriendToAntForeast"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivAntForeast"
         android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="@string/invite_friend_to_antforeast"
         android:textColor="@color/black"
         android:textSize="18sp"/>

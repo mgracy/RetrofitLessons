@@ -3,11 +3,12 @@ package com.mgx.retrofitlesson1.model.PopupWindowDemo;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
  */
 
 public class TitlePopup extends PopupWindow {
+    private static final String TAG = "TitlePopup";
     private Context mContext;
 
     //列表弹窗的间隔
@@ -78,7 +80,7 @@ public class TitlePopup extends PopupWindow {
     }
 
     public TitlePopup(Context context) {
-        this(context, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        this(context, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
     }
 
     /**
@@ -109,7 +111,7 @@ public class TitlePopup extends PopupWindow {
 
         //设置矩形的大小
         mRect.set(mLocation[0], mLocation[1], mLocation[0] + view.getWidth(),mLocation[1] + view.getHeight());
-
+        Log.d(TAG, "show: left " + mLocation[0] + ", top " + mLocation[1] + " right " +  view.getWidth() + " bottom " + view.getHeight());
         //判断是否需要添加或更新列表子类项
         if(mIsDirty){
             populateActions();
