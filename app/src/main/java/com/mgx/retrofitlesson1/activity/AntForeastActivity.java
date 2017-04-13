@@ -2,6 +2,7 @@ package com.mgx.retrofitlesson1.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,7 @@ import com.mgx.retrofitlesson1.model.AntForeastDemo.AntForeast;
 import com.mgx.retrofitlesson1.model.AntForeastDemo.AntForeastAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by glmgracy on 17/4/2.
  */
 
-public class AntForeastActivity extends Activity {
+public class AntForeastActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener, MyRefreshLayout.OnLoadListener {
     private static final String TAG = "AntForeastActivity";
     @BindView(R.id.tvAntTop)
     TextView tvAntTop;
@@ -33,12 +35,19 @@ public class AntForeastActivity extends Activity {
     private String[] names = {"Apple", "Orange", "Watermelon", "Pair", "Banana"};
     List<AntForeast> lists = new ArrayList<>();
 
+    private MyRefreshLayout swipeLayout;
+    private ListView listView;
+    private ArrayList<HashMap<String, String>>list;
+    private View header;
+    private AntForeastAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antforeast);
         ButterKnife.bind(this);
+        initView();
+        setListener();
         initAntForeast();
         initListView();
         lvAntForeast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,12 +61,21 @@ public class AntForeastActivity extends Activity {
         });
     }
 
+    private void setListener(){
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+    private void initView(){
+        header = getLayoutInflater().inflate(R.layout.recyclerheader, null);
+        swipeLayout = (MyRefreshLayout) findViewById(R.id.swipe_container);
+        swipeLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorDarkGrey, R.color.colorGreen, R.color.colorGrey);
+    }
     private void initListView() {
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_list_item_1, lists);
 //        lvAntForeast.setAdapter(adapter);
 
-        AntForeastAdapter adapter = new AntForeastAdapter(this, R.layout.layout_antforeast, lists);
+        adapter = new AntForeastAdapter(this, R.layout.layout_antforeast, lists);
         lvAntForeast.setAdapter(adapter);
     }
 
@@ -69,6 +87,41 @@ public class AntForeastActivity extends Activity {
         lists.add(new AntForeast(5, 5, "Two", R.drawable.mode, "Y", "0g"));
         lists.add(new AntForeast(6, 6, "Three", R.drawable.menu, "N", ""));
         return  lists;
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                lists.clear();
+                for (int i = 0; i < 8; i++) {
+                    lists.add(new AntForeast(i+1, 1+1, "Jack"+String.valueOf(i), R.drawable.banner, "Y", (20+i)+ "kg"));
+                    Log.d(TAG, "onRefresh-run: " + String.valueOf(i));
+                }
+                adapter.notifyDataSetChanged();
+                swipeLayout.setRefreshing(false);
+            }
+        }, 2000);
+    }
+
+    /**
+     * Load more
+     */
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setLoading(false);
+                for (int i = 0; i < 20; i++) {
+                    lists.add(new AntForeast(i+1, 1+1, "More"+String.valueOf(i), R.drawable.banner, "Y", (20+i)+ "kg"));
+                    Log.d(TAG, "onLoad-run: " + String.valueOf(i));
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, 2000);
     }
 }
 
