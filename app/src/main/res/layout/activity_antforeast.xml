@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.mgx.retrofitlesson1.activity.MyRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                  xmlns:tools="http://schemas.android.com/tools"
+                                                  android:id="@+id/swipe_container"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  tools:context=".activity.AntForeastActivity">
 
-    <com.mgx.retrofitlesson1.activity.MyRefreshLayout
-        android:id="@+id/swipe_container"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -26,5 +28,6 @@
             android:layout_height="match_parent">
 
         </ListView>
-    </com.mgx.retrofitlesson1.activity.MyRefreshLayout>
-</LinearLayout>
+    </LinearLayout>
+
+</com.mgx.retrofitlesson1.activity.MyRefreshLayout>

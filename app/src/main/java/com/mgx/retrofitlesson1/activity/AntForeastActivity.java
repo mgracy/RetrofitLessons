@@ -37,7 +37,7 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
 
     private MyRefreshLayout swipeLayout;
     private ListView listView;
-    private ArrayList<HashMap<String, String>>list;
+    private ArrayList<HashMap<String, String>> list;
     private View header;
     private AntForeastAdapter adapter;
 
@@ -61,15 +61,17 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
         });
     }
 
-    private void setListener(){
+    private void setListener() {
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setOnLoadListener(this);
     }
-    private void initView(){
+
+    private void initView() {
         header = getLayoutInflater().inflate(R.layout.recyclerheader, null);
         swipeLayout = (MyRefreshLayout) findViewById(R.id.swipe_container);
         swipeLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorDarkGrey, R.color.colorGreen, R.color.colorGrey);
     }
+
     private void initListView() {
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_list_item_1, lists);
@@ -79,14 +81,14 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
         lvAntForeast.setAdapter(adapter);
     }
 
-    private List<AntForeast> initAntForeast(){
+    private List<AntForeast> initAntForeast() {
         lists.add(new AntForeast(1, 1, "Jack", R.drawable.banner, "Y", "20.3kg"));
         lists.add(new AntForeast(2, 2, "Queen", R.drawable.myself_off, "Y", "18.3kg"));
         lists.add(new AntForeast(3, 3, "King", R.drawable.contact_off, "Y", "3kg"));
         lists.add(new AntForeast(4, 4, "One", R.drawable.discovery_off, "Y", "59g"));
         lists.add(new AntForeast(5, 5, "Two", R.drawable.mode, "Y", "0g"));
         lists.add(new AntForeast(6, 6, "Three", R.drawable.menu, "N", ""));
-        return  lists;
+        return lists;
     }
 
     @Override
@@ -94,13 +96,20 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
         swipeLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
-                lists.clear();
-                for (int i = 0; i < 8; i++) {
-                    lists.add(new AntForeast(i+1, 1+1, "Jack"+String.valueOf(i), R.drawable.banner, "Y", (20+i)+ "kg"));
+//                lists.clear();
+                int total = lists.size();
+                String[] namess = {"Jack", "Queen", "King", "Gracy", "Eric", "Willcart"};
+                int[] banners = {R.drawable.contact_off, R.drawable.discovery_off, R.drawable.wechat_off28, R.drawable.myself_off};
+                for (int i = 1; i <= 10; i++) {
+                    double d= Math.random();
+                    int random = (int) (d * 10);
+                    Log.d(TAG, "run: random " + String.valueOf(random) + ", Math.random() " + String.valueOf(d));
+                    lists.add(new AntForeast(total + i, total + i, namess[random % 6] + String.valueOf(total + i), banners[random % 4], "Y", (total + i) + "kg"));
                     Log.d(TAG, "onRefresh-run: " + String.valueOf(i));
                 }
                 adapter.notifyDataSetChanged();
                 swipeLayout.setRefreshing(false);
+                Log.d(TAG, "run: adapter.getCount " + adapter.getCount());
             }
         }, 2000);
     }
@@ -115,7 +124,7 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
             public void run() {
                 swipeLayout.setLoading(false);
                 for (int i = 0; i < 20; i++) {
-                    lists.add(new AntForeast(i+1, 1+1, "More"+String.valueOf(i), R.drawable.banner, "Y", (20+i)+ "kg"));
+                    lists.add(new AntForeast(i + 1, 1 + 1, "More" + String.valueOf(i), R.drawable.banner, "Y", (20 + i) + "kg"));
                     Log.d(TAG, "onLoad-run: " + String.valueOf(i));
 
                 }
