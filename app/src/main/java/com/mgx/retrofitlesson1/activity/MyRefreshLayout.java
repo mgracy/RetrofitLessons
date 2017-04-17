@@ -17,6 +17,7 @@ import com.mgx.retrofitlesson1.R;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * Created by glmgracy on 17/4/13.
@@ -64,12 +65,13 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
 
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mListViewFooter = LayoutInflater.from(context).inflate(
-                R.layout.layout_antforeast, null, false
+                R.layout.listview_footer, null, false
         );
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Log.d(TAG, "onLayout: mListView is null " + String.valueOf(mListView == null));
         super.onLayout(changed, left, top, right, bottom);
         if(mListView == null){
             getListView();
@@ -78,8 +80,13 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
 
     private void getListView() {
         int childs = getChildCount();
+
         if(childs > 0){
             View childView = getChildAt(0);
+            Log.d(TAG, "getListView: childs: " + childs);
+            Log.d(TAG, "getListView: childView instanceof ListView " + String.valueOf(childView instanceof ListView));
+            Log.d(TAG, "getListView: mListView is null " + String.valueOf(mListView == null));
+
             if(childView instanceof ListView){
                 mListView = (ListView) childView;
                 // 设置滚动监听器给ListView, 使得滚动的情况下也可以自动加载
@@ -106,6 +113,7 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
         
         switch (action){
             case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "dispatchTouchEvent: Down " + new Date().toString());
                 mYDown = (int) ev.getRawY();
                 break;
             
@@ -114,6 +122,9 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
                 break;
             
             case MotionEvent.ACTION_UP:
+                Log.d(TAG, "dispatchTouchEvent: Up " + new Date().toString());
+                int incr = (int) ev.getRawY() - mYDown;
+                Log.d(TAG, "dispatchTouchEvent: incr: " + String.valueOf(incr));
                 if(canLoad()){
                     loadData();
                 }
@@ -144,6 +155,7 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
      * @return
      */
     private boolean canLoad() {
+        Log.d(TAG, "canLoad: isLoading: " + String.valueOf(isLoading));
         return isBottom() && !isLoading && isPullup();
     }
 
@@ -184,7 +196,10 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
         }
     }
     public boolean isBottom() {
+        Log.d(TAG, "isBottom: 1");
         if(mListView !=null && mListView.getAdapter() !=null){
+            boolean a = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount()-1);
+            Log.d(TAG, "isBottom: a" + String.valueOf(a));
             return mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount()-1);
         }
         return false;
@@ -196,6 +211,10 @@ public class MyRefreshLayout extends SwipeRefreshLayout implements AbsListView.O
      * @return
      */
     public boolean isPullup() {
+        Log.d(TAG, "isPullup: mYDown:" + String.valueOf(mYDown) + ": mLastY:" + String.valueOf(mLastY)+ ": mTouchSlop:" + String.valueOf(mTouchSlop));
+
+        boolean a = (mYDown - mLastY) >= mTouchSlop;
+        Log.d(TAG, "isPullup: a " + String.valueOf(a));
         return (mYDown - mLastY) >= mTouchSlop;
     }
 

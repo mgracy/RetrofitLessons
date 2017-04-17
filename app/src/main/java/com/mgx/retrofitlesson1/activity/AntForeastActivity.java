@@ -39,6 +39,7 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
     private ListView listView;
     private ArrayList<HashMap<String, String>> list;
     private View header;
+    private TextView tvLoadingTitle;
     private AntForeastAdapter adapter;
 
     @Override
@@ -68,6 +69,7 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
 
     private void initView() {
         header = getLayoutInflater().inflate(R.layout.recyclerheader, null);
+        tvLoadingTitle = (TextView) header.findViewById(R.id.tvLoading);
         swipeLayout = (MyRefreshLayout) findViewById(R.id.swipe_container);
         swipeLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorDarkGrey, R.color.colorGreen, R.color.colorGrey);
     }
@@ -93,25 +95,42 @@ public class AntForeastActivity extends Activity implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
+        lvAntForeast.addHeaderView(header);
+
+        tvLoadingTitle.setText("正在加载");
         swipeLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (lists.size() > 30) {
+                    Log.d(TAG, "run: all is loaded");
+                    swipeLayout.setRefreshing(false);
+                    return;
+                }
 //                lists.clear();
                 int total = lists.size();
                 String[] namess = {"Jack", "Queen", "King", "Gracy", "Eric", "Willcart"};
                 int[] banners = {R.drawable.contact_off, R.drawable.discovery_off, R.drawable.wechat_off28, R.drawable.myself_off};
                 for (int i = 1; i <= 10; i++) {
-                    double d= Math.random();
+                    double d = Math.random();
                     int random = (int) (d * 10);
-                    Log.d(TAG, "run: random " + String.valueOf(random) + ", Math.random() " + String.valueOf(d));
+//                    Log.d(TAG, "run: random " + String.valueOf(random) + ", Math.random() " + String.valueOf(d));
                     lists.add(new AntForeast(total + i, total + i, namess[random % 6] + String.valueOf(total + i), banners[random % 4], "Y", (total + i) + "kg"));
-                    Log.d(TAG, "onRefresh-run: " + String.valueOf(i));
+//                    Log.d(TAG, "onRefresh-run: " + String.valueOf(i));
                 }
                 adapter.notifyDataSetChanged();
                 swipeLayout.setRefreshing(false);
                 Log.d(TAG, "run: adapter.getCount " + adapter.getCount());
+
+                tvLoadingTitle.setText("已加载10条记录");
+                tvLoadingTitle.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        lvAntForeast.removeHeaderView(header);
+                    }
+                }, 1500);
             }
         }, 2000);
+
     }
 
     /**
