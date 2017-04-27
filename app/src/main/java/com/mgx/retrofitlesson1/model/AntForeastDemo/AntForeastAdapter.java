@@ -82,8 +82,8 @@ public class AntForeastAdapter extends ArrayAdapter<AntForeast> {
 //                            .setTitle(getTitleRes())
 //                            .setView(getActivity().getLayoutInflater().inflate(getDialogRes(), null))
 //                            .show();
-                    Intent intent = new Intent(getContext(), AntForeastInviteDialog.class);
-                    getContext().startActivity(intent);
+                        Intent intent = new Intent(getContext(), AntForeastInviteDialog.class);
+                        getContext().startActivity(intent);
                 }
             });
         }
